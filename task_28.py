@@ -7,15 +7,14 @@
 # Если символ встречается 1 раз, он остается без изменений;
 # Если символ повторяется более 1 раза, к нему добавляется количество повторений
 
-some_str = "AAAABBBCCXYZDDDDEEEFFFAAAAAABBB"
+# some_str = "ABBBCCXYZDDDDEEEFFFAAAAAABBBC"
+
+import random
+some_str = ''.join([chr(random.randint(65, 66)) for _ in range(10 ** 2)])
 
 def RLE(some_str):
     some_list = list(some_str)
-    temp_list = []
-    fusion_list = []
-    result_list = []
-
-
+    temp_list, fusion_list, result_list = [], [], []
     for i in range(len(some_list) - 1):
         if some_list[i + 1] == some_list[i]:
             temp_list.append(some_list[i])
@@ -29,18 +28,16 @@ def RLE(some_str):
         fusion_list[-1].append(some_list[-1])
     else:
         fusion_list.append([some_list[-1]])
+    for i in fusion_list:
+        if len(i) > 1:
+            result_list.append(i[0])
+            result_list.append(i.count(i[0]))
+        else:
+            result_list.append(i[0])
 
-    temp_list = []
+    result_str = "".join(map(str, result_list))
 
-    for i in range(len(fusion_list)):
-        temp_list.append()
+    return result_str
 
-
-
-    return result_list
-
-
-result_list = RLE(some_str)
-
-a = result_list[0].count('A')
-print(a)
+print(some_str)
+print(RLE(some_str))
