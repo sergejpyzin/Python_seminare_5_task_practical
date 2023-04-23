@@ -7,11 +7,11 @@
 # Если символ встречается 1 раз, он остается без изменений;
 # Если символ повторяется более 1 раза, к нему добавляется количество повторений
 
+import random
+
 some_str = "ABBBCCXYZDDDDEEEFFFAAAAAABBBC"
 # some_str = ""
-
-import random
-# some_str = ''.join([chr(random.randint(65, 66)) for _ in range(10 ** 2)])
+# some_str = ''.join([chr(random.randint(65, 70)) for _ in range(10 ** 2)])
 
 def validity(some_str):
         return all(letter.isalpha() for letter in some_str)
